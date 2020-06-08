@@ -883,8 +883,10 @@ public class ServletMappingTest {
         
         System.out.println("\nContent for `"+ base + "AsyncTestServlet?testname=" + testName + "` :\n" + content + "\n");
         
-        for (String searchString : searchStrings.split(Pattern.quote("|"))) {
-            assertTrue(searchString, content.contains(searchString));
+        if (searchStrings != null) {
+            for (String searchString : searchStrings.split(Pattern.quote("|"))) {
+                assertTrue(searchString, content.contains(searchString));
+            }
         }
     }
    

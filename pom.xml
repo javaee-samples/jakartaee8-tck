@@ -277,12 +277,14 @@
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>payara-client-ee8</artifactId>
+                    <scope>test</scope>
                 </dependency>
     
                 <dependency>
                     <groupId>cloud.piranha.arquillian</groupId>
                     <artifactId>piranha-arquillian-server</artifactId>
                     <version>20.6.0-SNAPSHOT</version>
+                    <scope>test</scope>
                 </dependency>
             </dependencies>
     
