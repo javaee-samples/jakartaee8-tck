@@ -878,6 +878,8 @@ public class ServletMappingTest {
     private void invoke(String testName, String searchStrings) throws IOException {
         System.out.println("Running " + testName);
         
+        webClient.getOptions().setTimeout(0);
+        
         TextPage page = webClient.getPage(base + "/AsyncTestServlet?testname=" + testName);
         String content = page.getContent();
         

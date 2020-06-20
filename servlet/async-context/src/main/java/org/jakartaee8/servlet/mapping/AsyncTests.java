@@ -20,7 +20,6 @@
 package org.jakartaee8.servlet.mapping;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
@@ -31,28 +30,16 @@ public class AsyncTests extends GenericServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private static final String TEST_HEADER = "testname";
-    private static final Class<?>[] TEST_ARGS = { ServletRequest.class, ServletResponse.class };
-
-    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        String test = req.getParameter(TEST_HEADER);
+    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
         try {
-            getClass().getMethod(test, TEST_ARGS)
-                      .invoke(this, new Object[] { req, res });
-            
-        } catch (InvocationTargetException ite) {
-            throw new ServletException(ite.getTargetException());
-        } catch (NoSuchMethodException nsme) {
-            throw new ServletException("Test: " + test + " does not exist");
+            response.getWriter().println("ASYNC_STARTED_asyncTest");
+            response.getWriter().println("IsAsyncSupported=" + request.isAsyncSupported());
+            response.getWriter().println("IsAsyncStarted=" + request.isAsyncStarted());
+            response.getWriter().println("DispatcherType=" + request.getDispatcherType());
         } catch (Throwable t) {
-            throw new ServletException("Error executing test: " + test, t);
+            throw new ServletException("Error executing test: AsyncTests", t);
         }
     }
 
-    public void asyncTest(ServletRequest request, ServletResponse response) throws IOException {
-        response.getWriter().println("ASYNC_STARTED_asyncTest");
-        response.getWriter().println("IsAsyncSupported=" + request.isAsyncSupported());
-        response.getWriter().println("IsAsyncStarted=" + request.isAsyncStarted());
-        response.getWriter().println("DispatcherType=" + request.getDispatcherType());
-    }
+    
 }

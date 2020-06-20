@@ -69,11 +69,11 @@ public class AsyncTestServlet extends GenericTCKServlet {
             asyncContext.dispatch();
         }
     }
+    
     // Test for AsyncContext.dispatch()
-
     public void dispatchZeroArgTest2(ServletRequest request, ServletResponse response) throws IOException {
-
         String where = (String) request.getAttribute("WHERE");
+        
         if ("ASYNC".equals(where)) {
             response.getWriter().println("ASYNC_STARTED_dispatchZeroArgTest2");
             response.getWriter().println("IsAsyncSupported=" + request.isAsyncSupported());
@@ -98,6 +98,7 @@ public class AsyncTestServlet extends GenericTCKServlet {
         response.getWriter().println("IsAsyncSupported=" + request.isAsyncSupported());
         response.getWriter().println("IsAsyncStarted=" + request.isAsyncStarted());
         response.getWriter().println("DispatcherType=" + request.getDispatcherType());
+        
         AsyncContext asyncContext = request.startAsync();
         asyncContext.dispatch(request.getServletContext(), path);
     }

@@ -283,7 +283,7 @@
                 <dependency>
                     <groupId>cloud.piranha.arquillian</groupId>
                     <artifactId>piranha-arquillian-server</artifactId>
-                    <version>20.6.0-SNAPSHOT</version>
+                    <version>20.7.0-SNAPSHOT</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -296,7 +296,7 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <javaEEServer>piranha-embedded</javaEEServer>
-                                <piranha.version>20.6.0-SNAPSHOT</piranha.version>
+                                <piranha.version>20.7.0-SNAPSHOT</piranha.version>
                                 <piranha.offline>true</piranha.offline>
                                 <skipEJB>${skipEJB}</skipEJB>
                             </systemPropertyVariables>
