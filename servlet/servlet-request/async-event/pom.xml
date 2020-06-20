@@ -4,17 +4,12 @@
 
    <parent>
         <groupId>org.jakartaee8</groupId>
-        <artifactId>servlet</artifactId>
+        <artifactId>servlet-request</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-   <artifactId>servlet-request</artifactId>
-   <packaging>pom</packaging>
+   <artifactId>async-event</artifactId>
+   <packaging>war</packaging>
 
-   <name>Jakarta EE 8 TCK Samples: Servlet - ServletRequest</name>
-
-   <modules>
-        <module>async-context</module>
-        <module>async-event</module>
-    </modules>
+   <name>Jakarta EE 8 TCK Samples: Servlet - ServletRequest - Async Event</name>
 </project>
