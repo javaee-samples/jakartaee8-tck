@@ -17,18 +17,17 @@
 /*
  * $Id:$
  */
-package org.jakartaee8.servlet.mapping;
+package org.jakartaee8.servlet.servletrequest.asynccontext;
 
-import javax.servlet.ServletResponse;
-import javax.servlet.ServletResponseWrapper;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletRequestWrapper;
 
-public class ResponseWrapper extends ServletResponseWrapper {
+public class RequestWrapper extends ServletRequestWrapper {
 
-    protected ServletResponse origResponse;
+    protected ServletRequest origRequest;
 
-    public ResponseWrapper(ServletResponse response) {
-        super(response);
-        response.setContentType("text/plain");
-        origResponse = response;
+    public RequestWrapper(ServletRequest request) {
+        super(request);
+        origRequest = request;
     }
 }

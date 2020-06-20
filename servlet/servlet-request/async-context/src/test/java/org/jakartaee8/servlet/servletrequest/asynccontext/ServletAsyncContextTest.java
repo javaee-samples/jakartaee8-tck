@@ -1,4 +1,4 @@
-package org.jakartaee8.servlet.mapping;
+package org.jakartaee8.servlet.servletrequest.asynccontext;
 
 import static org.jboss.shrinkwrap.api.ShrinkWrap.create;
 import static org.junit.Assert.assertTrue;
@@ -9,6 +9,15 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
+import org.jakartaee8.servlet.servletrequest.asynccontext.ACListener;
+import org.jakartaee8.servlet.servletrequest.asynccontext.ACListener1;
+import org.jakartaee8.servlet.servletrequest.asynccontext.ACListener2;
+import org.jakartaee8.servlet.servletrequest.asynccontext.ACListenerBad;
+import org.jakartaee8.servlet.servletrequest.asynccontext.AsyncTestServlet;
+import org.jakartaee8.servlet.servletrequest.asynccontext.AsyncTests;
+import org.jakartaee8.servlet.servletrequest.asynccontext.GenericTCKServlet;
+import org.jakartaee8.servlet.servletrequest.asynccontext.RequestWrapper;
+import org.jakartaee8.servlet.servletrequest.asynccontext.ResponseWrapper;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -26,7 +35,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
  * @author Arjan Tijms
  */
 @RunWith(Arquillian.class)
-public class ServletMappingTest {
+public class ServletAsyncContextTest {
     
     private final static String APITEST = "APITEST";
     private final static String SEARCH_STRING = "SEARCH_STRING";

@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package org.jakartaee8.servlet.mapping;
+package org.jakartaee8.servlet.servletrequest.asynccontext;
 
 import java.io.IOException;
 import java.util.Timer;

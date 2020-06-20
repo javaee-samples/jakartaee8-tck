@@ -298,6 +298,7 @@
                                 <javaEEServer>piranha-embedded</javaEEServer>
                                 <piranha.version>20.7.0-SNAPSHOT</piranha.version>
                                 <piranha.offline>true</piranha.offline>
+                                <piranha.async.timeout>1000</piranha.async.timeout>
                                 <skipEJB>${skipEJB}</skipEJB>
                             </systemPropertyVariables>
                         </configuration>

@@ -20,7 +20,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
         <servlet-name>AsyncTestServlet</servlet-name>
-        <servlet-class>org.jakartaee8.servlet.mapping.AsyncTestServlet</servlet-class>
+        <servlet-class>org.jakartaee8.servlet.servletrequest.asynccontext.AsyncTestServlet</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
      <servlet-mapping>
@@ -31,7 +31,7 @@
     
     <servlet>
         <servlet-name>AsyncTests</servlet-name>
-        <servlet-class>org.jakartaee8.servlet.mapping.AsyncTests</servlet-class>
+        <servlet-class>org.jakartaee8.servlet.servletrequest.asynccontext.AsyncTests</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
     <servlet-mapping>

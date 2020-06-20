@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2018 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2009, 2018 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -14,31 +14,32 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package org.jakartaee8.servlet.mapping;
+package org.jakartaee8.servlet.servletrequest.asynccontext;
 
 import java.io.IOException;
 import javax.servlet.AsyncEvent;
 import javax.servlet.AsyncListener;
 
-public final class ACListenerBad implements AsyncListener {
+public final class ACListener implements AsyncListener {
 
-    public ACListenerBad() throws IOException {
-        throw new IOException("Make sure that ACListenerBad does not instantiate");
+    public ACListener() throws IOException {
     }
 
     public void onError(AsyncEvent event) throws IOException {
-        event.getAsyncContext().getResponse().getWriter().println("in onError method of ACListenerBad");
+        event.getAsyncContext().getResponse().getWriter().println("in onError method of ACListener");
     }
 
     public void onStartAsync(AsyncEvent event) throws IOException {
-        event.getAsyncContext().getResponse().getWriter().println("in onStartAsync method of ACListenerBad");
+        event.getAsyncContext().getResponse().getWriter().println("in onStartAsync method of ACListener");
     }
 
     public void onComplete(AsyncEvent event) throws IOException {
-        event.getAsyncContext().getResponse().getWriter().println("in onComplete method of ACListenerBad");
+        // bug 19258007: illegal to call getResponse() in here
+        // event.getAsyncContext().getResponse().getWriter().println("in onComplete
+        // method of ACListener");
     }
 
     public void onTimeout(AsyncEvent event) throws IOException {
-        event.getAsyncContext().getResponse().getWriter().println("in onTimeout method of ACListenerBad");
+        event.getAsyncContext().getResponse().getWriter().println("in onTimeout method of ACListener");
     }
 }

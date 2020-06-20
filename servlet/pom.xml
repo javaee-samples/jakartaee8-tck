@@ -14,7 +14,8 @@
    <name>Jakarta EE 8 TCK Samples: Servlet</name>
 
    <modules>
-        <module>async-context</module>
+        <module>servlet-request</module>
+        <module>http-servlet-request</module>
     </modules>
 
    <dependencies>
