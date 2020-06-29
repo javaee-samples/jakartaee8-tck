@@ -245,8 +245,8 @@ public class ServletRequestTest {
      */
     @Test
     @RunAsClient
-    public void getLocaleDeExceptionTest() throws Exception {
-        requestClient.getLocaleDeExceptionTest();
+    public void getLocaleDefaultTest() throws Exception {
+        requestClient.getLocaleDefaultTest();
     }
 
 
