@@ -10,8 +10,9 @@
     <name>Jakarta EE 8 TCK Samples: root</name>
 
     <!-- The Jakarta EE 8 specs that this project is providing samples for.
-        Each spec is represented by one module. "test-utils" is a helper module. -->
+        Each spec is represented by one module. "test-utils" and "url-client" are helper modules. -->
     <modules>
+        <module>url-client</module>
         <module>test-utils</module>
         <module>servlet</module>
     </modules>

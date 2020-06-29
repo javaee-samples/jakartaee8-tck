@@ -16,5 +16,6 @@
    <modules>
         <module>async-context</module>
         <module>async-event</module>
+        <module>servletrequest</module>
     </modules>
 </project>
