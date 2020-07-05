@@ -101,8 +101,8 @@ public class RequestClient extends AbstractUrlClient {
         invoke();
     }
 
-    public void getLocaleDeExceptionTest() throws Exception {
-        TEST_PROPS.setProperty(APITEST, "getLocaleDeExceptionTest");
+    public void getLocaleDefaultTest() throws Exception {
+        TEST_PROPS.setProperty(APITEST, "getLocaleDefaultTest");
         invoke();
     }
 
