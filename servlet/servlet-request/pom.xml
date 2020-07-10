@@ -16,6 +16,7 @@
    <modules>
         <module>async-context</module>
         <module>async-event</module>
+        <module>generic-filter</module>
         <module>servletrequest</module>
         <module>servletrequest1</module>
     </modules>
