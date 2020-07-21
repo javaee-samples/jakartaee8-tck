@@ -64,17 +64,11 @@ public final class TestUtil {
     public static final String[] EMPTY_STRING_ARRAY = new String[0];
 
     public static final int VM_UNDER_TEST = 0;
-
     public static final int VM_HARNESS = 1; // this is really the test client VM
-
     public static final int VM_JAVATEST = 2;
-
     public static final int DEBUG_OUTPUT_LEVEL = 2;
-
     public static final int NORMAL_OUTPUT_LEVEL = 3;
-
     public static final int ERROR_STREAM = 4;
-
     public static final int OUTPUT_STREAM = 5;
 
     public static String NEW_LINE = System.getProperty("line.separator", "\n");
@@ -82,15 +76,12 @@ public final class TestUtil {
     // by default so the testers don't have to do anything
     public static int iWhereAreWe = VM_UNDER_TEST;
 
-    private static PrintWriter out = null;
+    private static PrintWriter out;
+    private static PrintWriter err;
+    private static PrintWriter additionalWriter;
+    private static ObjectOutputStream objectOutputStream;
 
-    private static PrintWriter err = null;
-
-    private static PrintWriter additionalWriter = null;
-
-    private static ObjectOutputStream objectOutputStream = null;
-
-    private static Socket socketOnRemoteVM = null;
+    private static Socket socketOnRemoteVM;
 
     private static boolean bAlreadyInitialized = false;
 
@@ -121,7 +112,7 @@ public final class TestUtil {
     public static boolean harnessDebug;
 
     // hang onto the props that are passed in during logging init calls
-    private static Properties testProps = null;
+    private static Properties testProps;
 
     private static SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
 
@@ -280,6 +271,11 @@ public final class TestUtil {
         synchronized (socketMutex) {
             flushStream();
             try {
+                System.out.println(info.sOutput);
+                if (info.exception != null) {
+                    info.exception.printStackTrace();
+                }
+
                 objectOutputStream.writeObject(info);
                 // System.out.println("WROTE: " + info.sOutput);
             } catch (Exception e) {
@@ -323,27 +319,27 @@ public final class TestUtil {
         } else {
             PROPS_FILE = tmpDir + File.separator + userName + PROPS_FILE_NAME;
         }
-        System.out.println("************************************************************");
-        System.out.println("* props file set to \"" + PROPS_FILE + "\"");
-        System.out.println("************************************************************");
+//        System.out.println("************************************************************");
+//        System.out.println("* props file set to \"" + PROPS_FILE + "\"");
+//        System.out.println("************************************************************");
     }
 
     private static Properties getPropsFromFile() {
         FileInputStream in = null;
         Properties p = new Properties();
-        try {
-            in = new FileInputStream(PROPS_FILE);
-            p.load(in);
-        } catch (Exception e) {
-            logErr("Error reading the Properties object", e);
-        } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (Exception e) {
-                }
-            }
-        }
+//        try {
+//            in = new FileInputStream(PROPS_FILE);
+//            p.load(in);
+//        } catch (Exception e) {
+//            logErr("Error reading the Properties object", e);
+//        } finally {
+//            if (in != null) {
+//                try {
+//                    in.close();
+//                } catch (Exception e) {
+//                }
+//            }
+//        }
         return p;
     }
 
@@ -568,13 +564,7 @@ public final class TestUtil {
             }
         } else {
             TestReportInfo tri = new TestReportInfo("SVR: " + s, OUTPUT_STREAM, NORMAL_OUTPUT_LEVEL, null);
-            writeObject(tri); /*
-                               * try { synchronized(socketMutex) { objectOutputStream.flush(); objectOutputStream.writeObject(tri);
-                               * objectOutputStream.flush(); //System.out. println("successfully wrote to objectOutputStream"); } } catch(Exception
-                               * ex) { //System.out. println("got exception trying to write to objectOutputStream" ); //if we have any problem, buffer
-                               * the data synchronized(vBuffereredOutput) { vBuffereredOutput.addElement(tri); } }
-                               */
-
+            writeObject(tri);
         }
     }
 
@@ -987,18 +977,19 @@ class Acceptor extends Thread {
 }
 
 class TestReportInfo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     public int iDebugLevel = TestUtil.NORMAL_OUTPUT_LEVEL;
-
     public String sOutput = ""; // Constants.EMPTY_STRING;
-
-    public Throwable exception = null;
-
+    public Throwable exception;
     public int iStream = TestUtil.OUTPUT_STREAM;
 
     public TestReportInfo(String output, int stream, int level, Throwable e) {
         if (sOutput != null) {
             sOutput = output;
         }
+
         iDebugLevel = level;
         exception = e;
         iStream = stream;
