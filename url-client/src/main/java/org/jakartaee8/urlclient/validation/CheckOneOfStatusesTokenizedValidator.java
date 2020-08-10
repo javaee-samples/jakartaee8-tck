@@ -34,12 +34,13 @@ public class CheckOneOfStatusesTokenizedValidator extends TokenizedValidator {
      */
     @Override
     protected boolean checkStatusCode() throws IOException {
-        String responseCode = _res.getStatusCode();
-        String caseCodes = _case.getStatusCode();
+        String responseCode = response.getStatusCode();
+        String caseCodes = testCase.getStatusCode();
 
         if (caseCodes != null && caseCodes.charAt(0) != '!' && caseCodes.contains("|") && caseCodes.contains(responseCode)) {
-            _case.setExpectedStatusCode(responseCode);
+            testCase.setExpectedStatusCode(responseCode);
         }
+
         return super.checkStatusCode();
     }
 

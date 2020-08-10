@@ -1,6 +1,7 @@
 package org.jakartaee8.servlet.servletrequest.asynccontext;
 
 import static org.jboss.shrinkwrap.api.ShrinkWrap.create;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -9,15 +10,6 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
-import org.jakartaee8.servlet.servletrequest.asynccontext.ACListener;
-import org.jakartaee8.servlet.servletrequest.asynccontext.ACListener1;
-import org.jakartaee8.servlet.servletrequest.asynccontext.ACListener2;
-import org.jakartaee8.servlet.servletrequest.asynccontext.ACListenerBad;
-import org.jakartaee8.servlet.servletrequest.asynccontext.AsyncTestServlet;
-import org.jakartaee8.servlet.servletrequest.asynccontext.AsyncTests;
-import org.jakartaee8.servlet.servletrequest.asynccontext.GenericTCKServlet;
-import org.jakartaee8.servlet.servletrequest.asynccontext.RequestWrapper;
-import org.jakartaee8.servlet.servletrequest.asynccontext.ResponseWrapper;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -36,7 +28,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
  */
 @RunWith(Arquillian.class)
 public class ServletAsyncContextTest {
-    
+
     private final static String APITEST = "APITEST";
     private final static String SEARCH_STRING = "SEARCH_STRING";
     private final static String STATUS_CODE = "STATUS_CODE";
@@ -63,14 +55,14 @@ public class ServletAsyncContextTest {
     public void setup() {
         webClient = new WebClient();
     }
-    
+
     @After
     public void teardown() {
         webClient.close();
         testProperties.clear();
     }
-    
- 
+
+
     /* Run test */
     /*
      * Test set up:
@@ -86,7 +78,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: dispatchZeroArgTest
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:639; Servlet:JAVADOC:639.2;
      * Servlet:JAVADOC:639.4; Servlet:JAVADOC:703; Servlet:JAVADOC:707;
      * Servlet:JAVADOC:708; Servlet:JAVADOC:710;
@@ -111,7 +103,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: dispatchZeroArgTest1
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:639; Servlet:JAVADOC:639.2;
      * Servlet:JAVADOC:639.4; Servlet:JAVADOC:703; Servlet:JAVADOC:707;
      * Servlet:JAVADOC:708; Servlet:JAVADOC:710;
@@ -137,7 +129,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: dispatchZeroArgTest2
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:639; Servlet:JAVADOC:639.2;
      * Servlet:JAVADOC:639.4; Servlet:JAVADOC:703; Servlet:JAVADOC:707;
      * Servlet:JAVADOC:708; Servlet:JAVADOC:710;
@@ -163,7 +155,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: dispatchContextPathTest
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:641; Servlet:JAVADOC:703;
      * Servlet:JAVADOC:707; Servlet:JAVADOC:708; Servlet:JAVADOC:710;
      *
@@ -188,7 +180,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: dispatchContextPathTest1
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:641; Servlet:JAVADOC:703;
      * Servlet:JAVADOC:707; Servlet:JAVADOC:708; Servlet:JAVADOC:710;
      *
@@ -213,7 +205,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: dispatchContextPathTest2
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:641; Servlet:JAVADOC:703;
      * Servlet:JAVADOC:707; Servlet:JAVADOC:708; Servlet:JAVADOC:710;
      *
@@ -237,7 +229,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: forwardTest1
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:639; Servlet:JAVADOC:639.2;
      * Servlet:JAVADOC:639.4; Servlet:JAVADOC:703; Servlet:JAVADOC:707;
      * Servlet:JAVADOC:708; Servlet:JAVADOC:710;
@@ -267,7 +259,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:710;
      * Servlet:JAVADOC:710.1; Servlet:SPEC:270;
      *
@@ -285,7 +277,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest1
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -303,7 +295,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest2
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -321,7 +313,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest3
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -339,7 +331,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest4
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -357,7 +349,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest6
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:710;
      * Servlet:JAVADOC:710.1; Servlet:SPEC:270;
      *
@@ -375,7 +367,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest7
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -393,7 +385,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest8
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -411,7 +403,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest9
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -427,7 +419,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest10
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -443,7 +435,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest12
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:645;
      * Servlet:JAVADOC:710; Servlet:JAVADOC:710.1; Servlet:SPEC:270;
      *
@@ -461,7 +453,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest13
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:645;
      * Servlet:JAVADOC:712; Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -479,7 +471,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest14
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:645;
      * Servlet:JAVADOC:712; Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -497,7 +489,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest15
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:645;
      * Servlet:JAVADOC:712; Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -515,7 +507,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getRequestTest16
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:642; Servlet:JAVADOC:645;
      * Servlet:JAVADOC:712; Servlet:JAVADOC:712.1; Servlet:SPEC:270;
      *
@@ -533,7 +525,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: asyncListenerTest1
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:649; Servlet:JAVADOC:710;
      * Servlet:JAVADOC:846; Servlet:JAVADOC:866; Servlet:JAVADOC:873;
      *
@@ -551,7 +543,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: asyncListenerTest6
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:645; Servlet:JAVADOC:649;
      * Servlet:JAVADOC:710; Servlet:JAVADOC:846; Servlet:JAVADOC:866;
      * Servlet:JAVADOC:873;
@@ -571,7 +563,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: timeOutTest
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:649; Servlet:JAVADOC:710;
      * Servlet:JAVADOC:846; Servlet:JAVADOC:868; Servlet:JAVADOC:869;
      *
@@ -588,7 +580,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: timeOutTest1
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:649; Servlet:JAVADOC:710;
      * Servlet:JAVADOC:846; Servlet:JAVADOC:868; Servlet:JAVADOC:868.1;
      * Servlet:JAVADOC:869; Servlet:JAVADOC:869.3;
@@ -606,7 +598,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: timeOutTest2
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:651; Servlet:JAVADOC:710;
      * Servlet:JAVADOC:846; Servlet:JAVADOC:868; Servlet:JAVADOC:869;
      * Servlet:JAVADOC:869.1; Servlet:JAVADOC:869.2; Servlet:JAVADOC:869.5;
@@ -626,7 +618,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: timeOutTest4
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:651; Servlet:JAVADOC:710;
      * Servlet:JAVADOC:846; Servlet:JAVADOC:868; Servlet:JAVADOC:869.4;
      *
@@ -645,7 +637,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: originalRequestTest
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:638; Servlet:JAVADOC:644;
      * Servlet:JAVADOC:710; Servlet:JAVADOC:710.2;
      *
@@ -663,10 +655,10 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: originalRequestTest1
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:638; Servlet:JAVADOC:644;
      * Servlet:JAVADOC:712; Servlet:JAVADOC:712.1; Servlet:JAVADOC:712.3; *
-     * 
+     *
      * @test_Strategy: Create a Servlet AsyncTestServlet which support async;
      * Client send a request to AsyncTestServlet; Call
      * ServletRequest.startAsync(ServletRequest, ServletResponse); verifies
@@ -681,7 +673,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: originalRequestTest2
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:638; Servlet:JAVADOC:644;
      * Servlet:JAVADOC:712; Servlet:JAVADOC:712.1; Servlet:JAVADOC:712.3;
      *
@@ -699,7 +691,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: originalRequestTest3
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:638; Servlet:JAVADOC:644;
      * Servlet:JAVADOC:712; Servlet:JAVADOC:712.1; Servlet:JAVADOC:712.3;
      *
@@ -717,7 +709,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: originalRequestTest4
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:638; Servlet:JAVADOC:644;
      * Servlet:JAVADOC:712; Servlet:JAVADOC:712.1; Servlet:JAVADOC:712.3;
      *
@@ -735,7 +727,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getResponseTest
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:643; Servlet:JAVADOC:710;
      * Servlet:JAVADOC:710.1; Servlet:SPEC:271;
      *
@@ -753,7 +745,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getResponseTest1
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:643; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:271;
      *
@@ -771,7 +763,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getResponseTest2
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:643; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:271;
      *
@@ -789,7 +781,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getResponseTest3
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:643; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:271;
      *
@@ -807,7 +799,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: getResponseTest4
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:643; Servlet:JAVADOC:712;
      * Servlet:JAVADOC:712.1; Servlet:SPEC:271;
      *
@@ -825,7 +817,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: startAsyncAgainTest
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:639; Servlet:JAVADOC:639.2;
      * Servlet:JAVADOC:639.3; Servlet:JAVADOC:639.4; Servlet:JAVADOC:639.5;
      * Servlet:JAVADOC:639.9; Servlet:JAVADOC:703; Servlet:JAVADOC:707;
@@ -853,7 +845,7 @@ public class ServletAsyncContextTest {
 
     /*
      * @testName: startAsyncAgainTest1
-     * 
+     *
      * @assertion_ids: Servlet:JAVADOC:639; Servlet:JAVADOC:639.2;
      * Servlet:JAVADOC:639.3; Servlet:JAVADOC:639.4; Servlet:JAVADOC:639.5;
      * Servlet:JAVADOC:639.9; Servlet:JAVADOC:703; Servlet:JAVADOC:707;
@@ -879,26 +871,31 @@ public class ServletAsyncContextTest {
               + "Expected IllegalStateException thrown");
       invoke();
     }
-    
+
     private void invoke() throws IOException {
         invoke(testProperties.getProperty(APITEST), testProperties.getProperty(SEARCH_STRING));
     }
-    
+
     private void invoke(String testName, String searchStrings) throws IOException {
         System.out.println("Running " + testName);
-        
+
         webClient.getOptions().setTimeout(0);
-        
+
         TextPage page = webClient.getPage(base + "/AsyncTestServlet?testname=" + testName);
         String content = page.getContent();
-        
+
         System.out.println("\nContent for `"+ base + "AsyncTestServlet?testname=" + testName + "` :\n" + content + "\n");
-        
+
+        assertFalse(content.contains("Test FAILED"));
+
         if (searchStrings != null) {
+            int index = 0;
             for (String searchString : searchStrings.split(Pattern.quote("|"))) {
-                assertTrue(searchString, content.contains(searchString));
+                index = content.indexOf(searchString, index);
+                assertTrue(searchString, index != -1);
+                index += searchString.length();
             }
         }
     }
-   
+
 }

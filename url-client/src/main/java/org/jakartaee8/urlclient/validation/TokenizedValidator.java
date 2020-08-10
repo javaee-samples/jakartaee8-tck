@@ -62,14 +62,14 @@ public class TokenizedValidator extends WebValidatorBase {
     @Override
     protected boolean checkGoldenfile() throws IOException {
         String gf;
-        String path = _case.getGoldenfilePath();
-        String enc = _res.getResponseEncoding();
+        String path = testCase.getGoldenfilePath();
+        String enc = response.getResponseEncoding();
 
         if (path == null) {
             return true;
         }
 
-        Goldenfile file = new Goldenfile(_case.getGoldenfilePath(), enc);
+        Goldenfile file = new Goldenfile(testCase.getGoldenfilePath(), enc);
 
         try {
             gf = file.getGoldenFileAsString();
@@ -78,9 +78,9 @@ public class TokenizedValidator extends WebValidatorBase {
             return false;
         }
 
-        String response = _res.getResponseBodyAsString();
+        String responseBody = response.getResponseBodyAsString();
         StringTokenizer gfTokenizer = new StringTokenizer(gf);
-        StringTokenizer resTokenizer = new StringTokenizer(response);
+        StringTokenizer resTokenizer = new StringTokenizer(responseBody);
         int gfCount = gfTokenizer.countTokens();
         int resCount = resTokenizer.countTokens();
 
@@ -89,7 +89,7 @@ public class TokenizedValidator extends WebValidatorBase {
 
             TestUtil.logTrace("[TokenizedValidator][INFO] RECORDING GOLDENFILE: " + path);
             OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(path), enc);
-            out.write(response);
+            out.write(responseBody);
             out.flush();
             out.close();
         }
@@ -98,16 +98,16 @@ public class TokenizedValidator extends WebValidatorBase {
         // each individual token, otherwise, immediately fail.
         if (gfCount == resCount) {
             while (gfTokenizer.hasMoreTokens()) {
-                String exp = gfTokenizer.nextToken();
-                String res = resTokenizer.nextToken();
-                if (!exp.equals(res)) {
+                String expected = gfTokenizer.nextToken();
+                String actual = resTokenizer.nextToken();
+                if (!expected.equals(actual)) {
                     StringBuffer sb = new StringBuffer(255);
                     sb.append("[TokenizedValidator]: Server's response and ");
                     sb.append("goldenfile to not match!\n");
-                    sb.append("\n            Goldenfile token: ").append(exp);
-                    sb.append("\n            Response token:   ").append(res);
+                    sb.append("\n            Goldenfile token: ").append(expected);
+                    sb.append("\n            Response token:   ").append(actual);
                     TestUtil.logErr(sb.toString());
-                    dumpResponseInfo(response, gf);
+                    dumpResponseInfo(responseBody, gf);
                     return false;
                 }
             }
@@ -115,7 +115,7 @@ public class TokenizedValidator extends WebValidatorBase {
             TestUtil.logErr("[TokenizedValidator]: Token count between server response " + "and goldenfile do not match.\n Response Token" + "count: "
                     + resCount + "\nGoldenfile Token count: " + gfCount);
 
-            dumpResponseInfo(response, gf);
+            dumpResponseInfo(responseBody, gf);
             return false;
         }
         TestUtil.logTrace("[TokenizedValidator]: Server's response matches the " + "configured goldenfile.");
