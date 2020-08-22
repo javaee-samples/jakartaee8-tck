@@ -17,6 +17,7 @@
         <module>async-context</module>
         <module>async-event</module>
         <module>async-dispatch</module>
+        <module>filter-on-forward</module>
         <module>generic-filter</module>
         <module>generic-servlet</module>
         <module>servletrequest</module>
