@@ -184,8 +184,7 @@ public class RequestClient extends AbstractUrlClient {
     }
 
     public void getReaderUnsupportedEncodingExceptionTest() throws Exception {
-        String testName = "getReaderUnsupportedEncodingExceptionTest";
-        TEST_PROPS.setProperty(REQUEST, "POST " + getContextRoot() + "/" + testName + " HTTP/1.1");
+        TEST_PROPS.setProperty(REQUEST, "POST " + getContextRoot() + "/" + "getReaderUnsupportedEncodingExceptionTest" + " HTTP/1.1");
         TEST_PROPS.setProperty(REQUEST_HEADERS, "Content-Type:text/plain; charset=DoesNonExist");
         TEST_PROPS.setProperty(CONTENT, "calling getReaderUnsupportedEncodingExceptionTest");
         TEST_PROPS.setProperty(SEARCH_STRING, Data.PASSED);

@@ -40,18 +40,7 @@
             <param-value>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParam_Filter.SERVLET_MAPPED</param-value>
         </init-param>
     </filter>
-    <filter>
-        <filter-name>ServletMappedGetInitParamNames_Filter</filter-name>
-        <filter-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNames_Filter</filter-class>
-        <init-param>
-            <param-name>GetInitParamNames_Filter_attribute1</param-name>
-            <param-value>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNames_Filter.SERVLET_MAPPED1</param-value>
-        </init-param>
-        <init-param>
-            <param-name>GetInitParamNames_Filter_attribute2</param-name>
-            <param-value>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNames_Filter.SERVLET_MAPPED2</param-value>
-        </init-param>
-    </filter>
+
     <filter>
         <filter-name>ServletMappedGetServletContext_Filter</filter-name>
         <filter-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetServletContext_Filter</filter-class>
@@ -85,10 +74,7 @@
         <filter-name>ServletMappedGetInitParam_Filter</filter-name>
         <servlet-name>GetInitParamTestLogicalName</servlet-name>
     </filter-mapping>
-    <filter-mapping>
-        <filter-name>ServletMappedGetInitParamNames_Filter</filter-name>
-        <servlet-name>GetInitParamNamesTestLogicalName</servlet-name>
-    </filter-mapping>
+    
     <filter-mapping>
         <filter-name>ServletMappedGetServletContext_Filter</filter-name>
         <servlet-name>GetServletContextTestLogicalName</servlet-name>
@@ -102,71 +88,111 @@
         <servlet-name>GetInitParamNamesNullTestLogicalName</servlet-name>
     </filter-mapping>
     
+    
     <servlet>
         <servlet-name>InitFilterTestLogicalName</servlet-name>
         <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.InitFilterTestServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>InitFilterConfigTestLogicalName</servlet-name>
-        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.InitFilterConfigTestServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetFilterNameTestLogicalName</servlet-name>
-        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetFilterNameTestServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetInitParamNamesTestLogicalName</servlet-name>
-        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNamesTestServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetInitParamNamesNullTestLogicalName</servlet-name>
-        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNamesNullTestServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetServletContextTestLogicalName</servlet-name>
-        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetServletContextTestServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetInitParamTestLogicalName</servlet-name>
-        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamTestServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetInitParamNullTestLogicalName</servlet-name>
-        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNullTestServlet</servlet-class>
-    </servlet>
-    
     <servlet-mapping>
         <servlet-name>InitFilterTestLogicalName</servlet-name>
         <url-pattern>/InitFilterTest</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>InitFilterConfigTestLogicalName</servlet-name>
+        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.InitFilterConfigTestServlet</servlet-class>
+    </servlet>
+     <servlet-mapping>
         <servlet-name>InitFilterConfigTestLogicalName</servlet-name>
         <url-pattern>/InitFilterConfigTest</url-pattern>
     </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>GetFilterNameTestLogicalName</servlet-name>
+        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetFilterNameTestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetFilterNameTestLogicalName</servlet-name>
         <url-pattern>/GetFilterNameTest</url-pattern>
     </servlet-mapping>
+    
+    
+    
+    <servlet>
+        <servlet-name>GetInitParamNamesTestLogicalName</servlet-name>
+        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNamesTestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetInitParamNamesTestLogicalName</servlet-name>
         <url-pattern>/GetInitParamNamesTest</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>ServletMappedGetInitParamNames_Filter</filter-name>
+        <filter-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNames_Filter</filter-class>
+        <init-param>
+            <param-name>GetInitParamNames_Filter_attribute1</param-name>
+            <param-value>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNames_Filter.SERVLET_MAPPED1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>GetInitParamNames_Filter_attribute2</param-name>
+            <param-value>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNames_Filter.SERVLET_MAPPED2</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>ServletMappedGetInitParamNames_Filter</filter-name>
+        <servlet-name>GetInitParamNamesTestLogicalName</servlet-name>
+    </filter-mapping>
+    
+
+    
+    <servlet>
+        <servlet-name>GetInitParamNamesNullTestLogicalName</servlet-name>
+        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNamesNullTestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetInitParamNamesNullTestLogicalName</servlet-name>
         <url-pattern>/GetInitParamNamesNullTest</url-pattern>
     </servlet-mapping>
+
+    
+    <servlet>
+        <servlet-name>GetServletContextTestLogicalName</servlet-name>
+        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetServletContextTestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetServletContextTestLogicalName</servlet-name>
         <url-pattern>/GetServletContextTest</url-pattern>
     </servlet-mapping>
+
+    
+    <servlet>
+        <servlet-name>GetInitParamTestLogicalName</servlet-name>
+        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamTestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetInitParamTestLogicalName</servlet-name>
         <url-pattern>/GetInitParamTest</url-pattern>
     </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>GetInitParamNullTestLogicalName</servlet-name>
+        <servlet-class>org.jakartaee8.servlet.servletrequest.genericfilter.GetInitParamNullTestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetInitParamNullTestLogicalName</servlet-name>
         <url-pattern>/GetInitParamNullTest</url-pattern>
     </servlet-mapping>
+    
+    
+   
+    
+    
+    
+    
+    
     
     <session-config>
         <session-timeout>54</session-timeout>

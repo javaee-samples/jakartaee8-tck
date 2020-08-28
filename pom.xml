@@ -210,6 +210,8 @@
                 <configuration>
                     <aggregate>true</aggregate>
                     <linkXRef>true</linkXRef>
+                    <trimStackTrace>false</trimStackTrace>
+                    <argLine>-XX:+ShowCodeDetailsInExceptionMessages</argLine>
                 </configuration>
             </plugin>
             <plugin>
@@ -304,6 +306,8 @@
                                 <piranha.offline>true</piranha.offline>
                                 <piranha.async.timeout>1000</piranha.async.timeout>
                                 <skipEJB>${skipEJB}</skipEJB>
+                                <trimStackTrace>false</trimStackTrace>
+                                <argLine>-XX:+ShowCodeDetailsInExceptionMessages</argLine>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
