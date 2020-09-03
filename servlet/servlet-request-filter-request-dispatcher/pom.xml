@@ -4,7 +4,7 @@
 
     <parent>
         <groupId>org.jakartaee8</groupId>
-        <artifactId>servlet-request</artifactId>
+        <artifactId>servlet</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 

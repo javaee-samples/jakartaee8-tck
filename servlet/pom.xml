@@ -17,7 +17,15 @@
         <module>common-client</module>
         <module>common-server</module>
         <module>security-basic</module>
-        <module>servlet-request</module>
+        <module>servlet-request-async-context</module>
+        <module>servlet-request-async-event</module>
+        <module>servlet-request-async-dispatch</module>
+        <module>servlet-request-filter-on-forward</module>
+        <module>servlet-request-filter-request-dispatcher</module>
+        <module>servlet-request-generic-filter</module>
+        <module>servlet-request-generic-servlet</module>
+        <module>servlet-request-servletrequest</module>
+        <module>servlet-request-servletrequest1</module>
         <module>http-servlet-request</module>
     </modules>
 
