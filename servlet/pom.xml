@@ -26,10 +26,11 @@
         <module>servlet-request-generic-servlet</module>
         <module>servlet-request-servletrequest</module>
         <module>servlet-request-servletrequest1</module>
-        <module>servlet-request-request-dispatcher</module>
+        <module>servlet-request-servlet-context-30</module>
         <module>servlet-request-servlet-context-attribute-listener</module>
         <module>servlet-request-servlet-context-add-filter-jar</module>
         <module>servlet-request-servlet-context-add-filter</module>
+        <module>servlet-request-request-dispatcher</module>
         <module>http-servlet-request</module>
     </modules>
 
