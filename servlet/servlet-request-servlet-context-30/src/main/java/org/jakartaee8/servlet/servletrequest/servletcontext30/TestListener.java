@@ -50,14 +50,14 @@ public class TestListener implements ServletContextListener {
         final String addServletName1 = "AddServletString";
         final String addServletName2 = "AddServletClass";
         final String addServletName3 = "CreateServlet";
-        final String addServletName4 = "AddServletNotFound";
+        final String AddServletNotFound = "AddServletNotFound";
         final String addServletName5 = "DuplicateServletClass";
         final String addServletName6 = "DuplicateServletString";
 
         final String addFilterName1 = "AddFilterString";
         final String addFilterName2 = "AddFilterClass";
         final String addFilterName3 = "CreateFilter";
-        final String addFilterName4 = "AddFilterNotFound";
+        final String AddFilterNotFound = "AddFilterNotFound";
 
 
         /*
@@ -113,16 +113,28 @@ public class TestListener implements ServletContextListener {
         /*
          * Add Servlet AddServletNotFound
          */
-        ServletRegistration srNotFound = context.addServlet(addServletName4, AddServletNotFound.class);
-        srNotFound.addMapping("/addServletNotFound", "/TestServlet");
-        srNotFound.setInitParameter("FILTER", addFilterName4);
-        srNotFound.setInitParameter(addFilterName4, "ALL");
 
-        FilterRegistration frNotFound = context.addFilter(addFilterName4, AddFilterNotFound.class);
-        frNotFound.addMappingForServletNames(EnumSet.of(REQUEST, INCLUDE, FORWARD, ERROR), true,
-                addServletName4);
-        frNotFound.setInitParameter("SERVLET", addServletName4);
-        frNotFound.setInitParameter(addServletName4, "ALL");
+        // Test org.jakartaee8.servlet.servletrequest.servletcontext30.Servletcontext30Client.testAddServletNotFound()
+
+        // 1. create a Servlet by calling ServletContext.addServlet(String, Class),
+        ServletRegistration servletRegistrationNotFound = context.addServlet(AddServletNotFound, AddServletNotFound.class);
+
+        // 2. mapping the new Servlet programmatically to multiple URLs, one of them is used by another Servlet already.
+        servletRegistrationNotFound.addMapping("/addServletNotFound", "/TestServlet");
+        servletRegistrationNotFound.setInitParameter("FILTER", AddFilterNotFound);
+        servletRegistrationNotFound.setInitParameter(AddFilterNotFound, "ALL");
+
+        // 3. create a Filter by ServletContext.addFilter(String, Class)
+        FilterRegistration filterRegistrationNotFound = context.addFilter(AddFilterNotFound, AddFilterNotFound.class);
+
+        // 4. map the filter to the new Servlet programmatically for all DispatcherType
+        filterRegistrationNotFound.addMappingForServletNames(
+            EnumSet.of(REQUEST, INCLUDE, FORWARD, ERROR),
+            true,
+            AddServletNotFound);
+
+        filterRegistrationNotFound.setInitParameter("SERVLET", AddServletNotFound);
+        filterRegistrationNotFound.setInitParameter(AddServletNotFound, "ALL");
 
 
         /*

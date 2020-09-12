@@ -24,7 +24,7 @@ import static org.jakartaee8.urlclient.ServletTestUtil.printResult;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
@@ -44,19 +44,20 @@ public class AddServletNotFound extends GenericServlet {
         printWriter.println("AddServletNotFound is invoked");
         printResult(printWriter, true);
 
-        ArrayList result = (ArrayList) getServletContext().getAttribute("arraylist");
+        @SuppressWarnings("unchecked")
+        List<String> result = (List<String>) getServletContext().getAttribute("arraylist");
 
-        for (Object tmp : result) {
-            printWriter.println(tmp.toString());
-
+        for (String tmp : result) {
+            printWriter.println(tmp);
         }
+
         getServletContext().removeAttribute("arraylist");
 
         result = StaticLog.getClear();
         if (result != null) {
-            for (Object tmp : result) {
+            for (String tmp : result) {
                 if (tmp != null) {
-                    printWriter.println(tmp.toString());
+                    printWriter.println(tmp);
                 }
             }
         }

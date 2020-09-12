@@ -188,10 +188,9 @@ public class Servletcontext30Client extends AbstractUrlClient {
      * invoked in the order added.
      */
     public void testAddFilterClass() throws Exception {
-      TEST_PROPS.setProperty(APITEST, "testAddFilterClass");
-      TEST_PROPS.setProperty(UNEXPECTED_RESPONSE_MATCH,
-          "ADD_FILTER_CLASS_INVOKED");
-      TEST_PROPS.setProperty(SEARCH_STRING,
+        TEST_PROPS.setProperty(APITEST, "testAddFilterClass");
+        TEST_PROPS.setProperty(UNEXPECTED_RESPONSE_MATCH, "ADD_FILTER_CLASS_INVOKED");
+        TEST_PROPS.setProperty(SEARCH_STRING,
           "AddServletClass" + "|AddSRListenerClass_INVOKED"
               + "|AddSRListenerString_INVOKED" + "|CreateSRListener_INVOKED"
               + "|SCAttributeAddedClass" + "|SCAttributeAddedString");
@@ -298,28 +297,29 @@ public class Servletcontext30Client extends AbstractUrlClient {
     /*
      * @testName: testAddServletNotFound
      *
-     * @assertion_ids: Servlet:JAVADOC:655; Servlet:JAVADOC:670;
-     * Servlet:JAVADOC:671.1; Servlet:JAVADOC:671.2; Servlet:JAVADOC:671.3;
-     * Servlet:JAVADOC:672.1; Servlet:JAVADOC:672.2; Servlet:JAVADOC:672.3;
-     * Servlet:JAVADOC:673.1; Servlet:JAVADOC:673.2; Servlet:JAVADOC:673.3;
-     * Servlet:JAVADOC:676; Servlet:JAVADOC:679; Servlet:JAVADOC:696;
+     * @assertion_ids: Servlet:JAVADOC:655;
+     * Servlet:JAVADOC:670; (addFilter)
+     * Servlet:JAVADOC:671.1; Servlet:JAVADOC:671.2; Servlet:JAVADOC:671.3; (addListener string)
+     * Servlet:JAVADOC:672.1; Servlet:JAVADOC:672.2; Servlet:JAVADOC:672.3; (addListener EventListener)
+     * Servlet:JAVADOC:673.1; Servlet:JAVADOC:673.2; Servlet:JAVADOC:673.3; (addListener class)
+     * Servlet:JAVADOC:676; (addServlet)
+     * Servlet:JAVADOC:679; (createListener)
+     * Servlet:JAVADOC:696; (addMapping)
      *
-     * @test_Strategy: Create a ServletContextListener, in which, 1. create a
-     * Servlet by calling ServletContext.addServlet(String, Class), 2. mapping the
-     * new Servlet programmatically to multiple URLs, one of them is used by
-     * another Servlet already. 3. create a Filter by
-     * ServletContext.addFilter(String, Class) 4. map the filter to the new
-     * Servlet programmatically for all DispatcherType 5. client send a request to
-     * the new servlet, Verify in client that request does NOT go through and
-     * Filter is NOT invoked.
+     * @test_Strategy:
+     * Create a ServletContextListener, in which,
+     *    1. create a Servlet by calling ServletContext.addServlet(String, Class),
+     *    2. mapping the new Servlet programmatically to multiple URLs, one of them is used by another Servlet already. (Servlet:JAVADOC:696.1)
+     *    3. create a Filter by ServletContext.addFilter(String, Class) (Servlet:JAVADOC:670)
+     *    4. map the filter to the new Servlet programmatically for all DispatcherType  (Servlet:JAVADOC:655)
+     *
+     * 5. client send a request to the new servlet, verify in client that request does NOT go through and Filter is NOT invoked.
      */
     public void testAddServletNotFound() throws Exception {
-      TEST_PROPS.setProperty(REQUEST,
-          "GET " + getContextRoot() + "/addServletNotFound HTTP/1.1");
-      TEST_PROPS.setProperty(STATUS_CODE, NOT_FOUND);
-      TEST_PROPS.setProperty(UNEXPECTED_RESPONSE_MATCH,
-          "AddServletNotFound|ADD_FILTER_NOTFOUND");
-      invoke();
+        TEST_PROPS.setProperty(REQUEST, "GET " + getContextRoot() + "/addServletNotFound HTTP/1.1");
+        TEST_PROPS.setProperty(STATUS_CODE, NOT_FOUND);
+        TEST_PROPS.setProperty(UNEXPECTED_RESPONSE_MATCH, "AddServletNotFound|ADD_FILTER_NOTFOUND");
+        invoke();
     }
 
     /*
