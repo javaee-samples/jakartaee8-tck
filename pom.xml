@@ -33,6 +33,7 @@
             in these versions by Maven for the CI profiles) -->
         <payara.version>5.194</payara.version>
         <payara.micro.version>5.194</payara.micro.version>
+        <piranha.version>20.10.0-SNAPSHOT</piranha.version>
         <glassfish.version>5.0</glassfish.version>
         <tomcat.version>9.0.12</tomcat.version>
         <thorntail.version>2.3.0.Final</thorntail.version>
@@ -290,7 +291,7 @@
                 <dependency>
                     <groupId>cloud.piranha.arquillian</groupId>
                     <artifactId>piranha-arquillian-server</artifactId>
-                    <version>20.9.0-SNAPSHOT</version>
+                    <version>${piranha.version}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
